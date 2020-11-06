@@ -4,7 +4,7 @@
 #### Overview
 This is a standalone simulation which requires <1GB of memory. It takes about 20 seconds to run. The compressed size is <2MB. 
 
-It's a 6-core C6 transport tracer simulation, with emissions zeroed out.
+It's a 1-day 6-core C6 transport tracer simulation, with emissions zeroed out.
 
 #### Running
 You can run the simulation* by doing
