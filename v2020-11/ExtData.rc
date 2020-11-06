@@ -1,0 +1,334 @@
+Ext_AllowExtrap: .true.
+DEBUG_LEVEL: 0
+#
+PrimaryExports%%
+#--------|-------|------|------------|---------------|--------|-------|---------------------|
+# Export |       |      |            |___ Refresh ___|____ Factors ___|___ External File ___|
+# Name   | Units | Clim |Conservative| Time Template | Offset | Scale | Variable | Template |
+#--------|-------|------|------------|---------------|--------|-------|----------|----------|
+# 
+# Notes:
+# Units should be in single quotes if they contain whitespace
+# V Loc should be C if the data is vertically centered
+# Climatology should be Y if the file contains monthly climatology; otherwise it should be N
+# Conservative should be Y if units imply mass conservation dependency on regrid method (e.g. value per area)
+# Refresh Time Template should be:
+#    1. - if the file contains time-invariant constants
+#    2. prefixed with F if no time interpolation between data reads (F = fixed)
+#    3. 0 if data should be kept up-to-date at all times
+#    4. 0:HHMMSS if data occurs in file with frequency HHMMSS and should be updated at that frequency
+#    5. %y4-%m2-%d2T%h2:00:00, with any tokens replaced by appropriate constant time value, if multiple time
+#       values are in the same file. Note that including an F prefix indicates the data should be treated
+#       as constant until the next refresh time. Omission of the F prefix will time-interpolate between
+#       the values.  
+
+###############################################################################
+###
+### Meteorology data
+###
+###############################################################################
+
+# --- 2D variables, 1-hr averaged ---
+ALBD     '1'         N Y - none none         ALBEDO     ./minimal_input_dataset/metfields_center.nc
+CLDFRC   '1'         N Y - none none         CLDTOT     ./minimal_input_dataset/metfields_center.nc
+EFLUX    '1'         N Y - none none         EFLUX      ./minimal_input_dataset/metfields_center.nc
+EVAP     '1'         N Y - none none         EVAP       ./minimal_input_dataset/metfields_center.nc
+FRSEAICE '1'         N Y - none none         FRSEAICE   ./minimal_input_dataset/metfields_center.nc
+FRSNO    '1'         N Y - none none         FRSNO      ./minimal_input_dataset/metfields_center.nc
+GRN      '1'         N Y - none none         GRN        ./minimal_input_dataset/metfields_center.nc
+GWETROOT '1'         N Y - none none         GWETROOT   ./minimal_input_dataset/metfields_center.nc
+GWETTOP  '1'         N Y - none none         GWETTOP    ./minimal_input_dataset/metfields_center.nc
+HFLUX    '1'         N Y - none none         HFLUX      ./minimal_input_dataset/metfields_center.nc
+LAI      '1'         N Y - none none         LAI        ./minimal_input_dataset/metfields_center.nc
+LWI      '1'         N Y - none none         LWI        ./minimal_input_dataset/metfields_center.nc
+RADLWG   '1'         N Y - none none         LWGNT      ./minimal_input_dataset/metfields_center.nc
+PARDF    '1'         N Y - none none         PARDF      ./minimal_input_dataset/metfields_center.nc
+PARDR    '1'         N Y - none none         PARDR      ./minimal_input_dataset/metfields_center.nc
+PBLH     '1'         N Y - none none         PBLH       ./minimal_input_dataset/metfields_center.nc
+PRECANV  '1'         N Y - none none         PRECANV    ./minimal_input_dataset/metfields_center.nc
+PRECCON  '1'         N Y - none none         PRECCON    ./minimal_input_dataset/metfields_center.nc
+PRECLSC  '1'         N Y - none none         PRECLSC    ./minimal_input_dataset/metfields_center.nc
+PRECSNO  '1'         N Y - none none         PRECSNO    ./minimal_input_dataset/metfields_center.nc
+PRECTOT  '1'         N Y - none none         PRECTOT    ./minimal_input_dataset/metfields_center.nc
+SEAICE00 '1'         N Y - none none         SEAICE00   ./minimal_input_dataset/metfields_center.nc
+SEAICE10 '1'         N Y - none none         SEAICE10   ./minimal_input_dataset/metfields_center.nc
+SEAICE20 '1'         N Y - none none         SEAICE20   ./minimal_input_dataset/metfields_center.nc
+SEAICE30 '1'         N Y - none none         SEAICE30   ./minimal_input_dataset/metfields_center.nc
+SEAICE40 '1'         N Y - none none         SEAICE40   ./minimal_input_dataset/metfields_center.nc
+SEAICE50 '1'         N Y - none none         SEAICE50   ./minimal_input_dataset/metfields_center.nc
+SEAICE60 '1'         N Y - none none         SEAICE60   ./minimal_input_dataset/metfields_center.nc
+SEAICE70 '1'         N Y - none none         SEAICE70   ./minimal_input_dataset/metfields_center.nc
+SEAICE80 '1'         N Y - none none         SEAICE80   ./minimal_input_dataset/metfields_center.nc
+SEAICE90 '1'         N Y - none none         SEAICE90   ./minimal_input_dataset/metfields_center.nc
+SLP      Pa          N Y - none 0.01         SLP        ./minimal_input_dataset/metfields_center.nc
+SNODP    '1'         N Y - none none         SNODP      ./minimal_input_dataset/metfields_center.nc
+SNOMAS   '1'         N Y - none none         SNOMAS     ./minimal_input_dataset/metfields_center.nc
+RADSWG   '1'         N Y - none none         SWGDN      ./minimal_input_dataset/metfields_center.nc
+TO3      'dobson'    N Y - none none         TO3        ./minimal_input_dataset/metfields_center.nc
+TROPP    Pa          N Y - none 0.01         TROPPT     ./minimal_input_dataset/metfields_center.nc
+TSKIN    '1'         N Y - none none         TS         ./minimal_input_dataset/metfields_center.nc
+TS       '1'         N Y - none none         T2M        ./minimal_input_dataset/metfields_center.nc
+USTAR    '1'         N Y - none none         USTAR      ./minimal_input_dataset/metfields_center.nc
+U10M     'm s-1'     N Y - none none         U10M       ./minimal_input_dataset/metfields_center.nc
+V10M     'm s-1'     N Y - none none         V10M       ./minimal_input_dataset/metfields_center.nc
+Z0       '1'         N Y - none none         Z0M        ./minimal_input_dataset/metfields_center.nc
+
+# --- Surface pressure, 3-hr instantaneous ---
+PS1      Pa  N Y -         none 0.01 PS         ./minimal_input_dataset/metfields_center.nc
+PS2      Pa  N Y -         none 0.01 PS         ./minimal_input_dataset/metfields_center.nc
+
+# --- 3D variables, 3-hr instantaneous ---
+SPHU1    'kg kg-1'   N Y -         none none         QV         ./minimal_input_dataset/metfields_center.nc
+SPHU2    'kg kg-1'   N Y -         none none         QV         ./minimal_input_dataset/metfields_center.nc
+TMPU1    'K'         N Y -         none none         T          ./minimal_input_dataset/metfields_center.nc
+TMPU2    'K'         N Y -         none none         T          ./minimal_input_dataset/metfields_center.nc
+
+# --- 3D variables, 3-hr averaged ---
+QI       '1'         N Y - none none         QI         ./minimal_input_dataset/metfields_center.nc
+QL       '1'         N Y - none none         QL         ./minimal_input_dataset/metfields_center.nc
+TAUCLI   '1'         N Y - none none         TAUCLI     ./minimal_input_dataset/metfields_center.nc
+TAUCLW   '1'         N Y - none none         TAUCLW     ./minimal_input_dataset/metfields_center.nc
+OPTDEP   '1'         N Y - none none         OPTDEPTH   ./minimal_input_dataset/metfields_center.nc
+CLDF     '1'         N Y - none none         CLOUD      ./minimal_input_dataset/metfields_center.nc
+DTRAIN   '1'         N Y - none none         DTRAIN     ./minimal_input_dataset/metfields_center.nc
+OMEGA    'Pa s-1'    N Y - none none         OMEGA      ./minimal_input_dataset/metfields_center.nc
+RH       '-'         N Y - none none         RH         ./minimal_input_dataset/metfields_center.nc
+UA;VA    'm s-1'     N Y - none none         U;V        ./minimal_input_dataset/metfields_center.nc
+DQRCU    '1'         N Y - none none         DQRCU      ./minimal_input_dataset/metfields_center.nc
+DQRLSAN  '1'         N Y - none none         DQRLSAN    ./minimal_input_dataset/metfields_center.nc
+REEVAPCN '1'         N Y - none none         REEVAPCN   ./minimal_input_dataset/metfields_center.nc
+REEVAPLS '1'         N Y - none none         REEVAPLS   ./minimal_input_dataset/metfields_center.nc
+CMFMC    '1'         N Y - none none         CMFMC      ./minimal_input_dataset/metfields_edge.nc
+PFICU    '1'         N Y - none none         PFICU      ./minimal_input_dataset/metfields_edge.nc
+PFILSAN  '1'         N Y - none none         PFILSAN    ./minimal_input_dataset/metfields_edge.nc
+PFLCU    '1'         N Y - none none         PFLCU      ./minimal_input_dataset/metfields_edge.nc
+PFLLSAN  '1'         N Y - none none         PFLLSAN    ./minimal_input_dataset/metfields_edge.nc
+
+# --- Fixed variables, from constants file ---
+FRLAKE   '1'         N Y -         none none         FRLAKE     ./minimal_input_dataset/metfields_center.nc
+FRLAND   '1'         N Y -         none none         FRLAND     ./minimal_input_dataset/metfields_center.nc
+FRLANDIC '1'         N Y -         none none         FRLANDIC   ./minimal_input_dataset/metfields_center.nc
+FROCEAN  '1'         N Y -         none none         FROCEAN    ./minimal_input_dataset/metfields_center.nc
+PHIS     'm2 s-2'    N Y -         none none         PHIS       ./minimal_input_dataset/metfields_center.nc
+
+# --- Fields for lightning emissions (Extension 103) ---
+FLASH_DENS '1'       N Y - none none         LDENS      ./minimal_input_dataset/metfields_center.nc
+CONV_DEPTH '1'       N Y - none none         CTH        ./minimal_input_dataset/metfields_center.nc
+
+###############################################################################
+###
+### Land data (not handled by HEMCO)
+###
+###############################################################################
+
+#==============================================================================
+# Olson land types - conservative frac regridding of OLSON
+#==============================================================================
+# Use conservative fraction regridding to extract land type fraction
+OLSON00 1 N F;0  - none none OLSON /dev/null:0
+OLSON01 1 N F;1  - none none OLSON /dev/null:1
+OLSON02 1 N F;2  - none none OLSON /dev/null:0
+OLSON03 1 N F;3  - none none OLSON /dev/null:0
+OLSON04 1 N F;4  - none none OLSON /dev/null:0
+OLSON05 1 N F;5  - none none OLSON /dev/null:0
+OLSON06 1 N F;6  - none none OLSON /dev/null:0
+OLSON07 1 N F;7  - none none OLSON /dev/null:0
+OLSON08 1 N F;8  - none none OLSON /dev/null:0
+OLSON09 1 N F;9  - none none OLSON /dev/null:0
+OLSON10 1 N F;10 - none none OLSON /dev/null:0
+OLSON11 1 N F;11 - none none OLSON /dev/null:0
+OLSON12 1 N F;12 - none none OLSON /dev/null:0
+OLSON13 1 N F;13 - none none OLSON /dev/null:0
+OLSON14 1 N F;14 - none none OLSON /dev/null:0
+OLSON15 1 N F;15 - none none OLSON /dev/null:0
+OLSON16 1 N F;16 - none none OLSON /dev/null:0
+OLSON17 1 N F;17 - none none OLSON /dev/null:0
+OLSON18 1 N F;18 - none none OLSON /dev/null:0
+OLSON19 1 N F;19 - none none OLSON /dev/null:0
+OLSON20 1 N F;20 - none none OLSON /dev/null:0
+OLSON21 1 N F;21 - none none OLSON /dev/null:0
+OLSON22 1 N F;22 - none none OLSON /dev/null:0
+OLSON23 1 N F;23 - none none OLSON /dev/null:0
+OLSON24 1 N F;24 - none none OLSON /dev/null:0
+OLSON25 1 N F;25 - none none OLSON /dev/null:0
+OLSON26 1 N F;26 - none none OLSON /dev/null:0
+OLSON27 1 N F;27 - none none OLSON /dev/null:0
+OLSON28 1 N F;28 - none none OLSON /dev/null:0
+OLSON29 1 N F;29 - none none OLSON /dev/null:0
+OLSON30 1 N F;30 - none none OLSON /dev/null:0
+OLSON31 1 N F;31 - none none OLSON /dev/null:0
+OLSON32 1 N F;32 - none none OLSON /dev/null:0
+OLSON33 1 N F;33 - none none OLSON /dev/null:0
+OLSON34 1 N F;34 - none none OLSON /dev/null:0
+OLSON35 1 N F;35 - none none OLSON /dev/null:0
+OLSON36 1 N F;36 - none none OLSON /dev/null:0
+OLSON37 1 N F;37 - none none OLSON /dev/null:0
+OLSON38 1 N F;38 - none none OLSON /dev/null:0
+OLSON39 1 N F;39 - none none OLSON /dev/null:0
+OLSON40 1 N F;40 - none none OLSON /dev/null:0
+OLSON41 1 N F;41 - none none OLSON /dev/null:0
+OLSON42 1 N F;42 - none none OLSON /dev/null:0
+OLSON43 1 N F;43 - none none OLSON /dev/null:0
+OLSON44 1 N F;44 - none none OLSON /dev/null:0
+OLSON45 1 N F;45 - none none OLSON /dev/null:0
+OLSON46 1 N F;46 - none none OLSON /dev/null:0
+OLSON47 1 N F;47 - none none OLSON /dev/null:0
+OLSON48 1 N F;48 - none none OLSON /dev/null:0
+OLSON49 1 N F;49 - none none OLSON /dev/null:0
+OLSON50 1 N F;50 - none none OLSON /dev/null:0
+OLSON51 1 N F;51 - none none OLSON /dev/null:0
+OLSON52 1 N F;52 - none none OLSON /dev/null:0
+OLSON53 1 N F;53 - none none OLSON /dev/null:0
+OLSON54 1 N F;54 - none none OLSON /dev/null:0
+OLSON55 1 N F;55 - none none OLSON /dev/null:0
+OLSON56 1 N F;56 - none none OLSON /dev/null:0
+OLSON57 1 N F;57 - none none OLSON /dev/null:0
+OLSON58 1 N F;58 - none none OLSON /dev/null:0
+OLSON59 1 N F;59 - none none OLSON /dev/null:0
+OLSON60 1 N F;60 - none none OLSON /dev/null:0
+OLSON61 1 N F;61 - none none OLSON /dev/null:0
+OLSON62 1 N F;62 - none none OLSON /dev/null:0
+OLSON63 1 N F;63 - none none OLSON /dev/null:0
+OLSON64 1 N F;64 - none none OLSON /dev/null:0
+OLSON65 1 N F;65 - none none OLSON /dev/null:0
+OLSON66 1 N F;66 - none none OLSON /dev/null:0
+OLSON67 1 N F;67 - none none OLSON /dev/null:0
+OLSON68 1 N F;68 - none none OLSON /dev/null:0
+OLSON69 1 N F;69 - none none OLSON /dev/null:0
+OLSON70 1 N F;70 - none none OLSON /dev/null:0
+OLSON71 1 N F;71 - none none OLSON /dev/null:0
+OLSON72 1 N F;72 - none none OLSON /dev/null:0
+
+#==============================================================================
+# MODIS Leaf Area Index
+#
+# NOTE: There are two options for offline MODIS LAI: legacy and Yuan et al.
+#       Both may be used in GCHP but legacy should be used when comparing with
+#       GEOS-Chem Classic until it because default. Legacy is default in GCHP.
+#==============================================================================
+
+#---------------------------
+# Option 1: legacy MODIS LAI
+#---------------------------
+# Use file with land type stored as 3rd dimension to speed up file read
+XLAIMULTI cm2_cm-2 N Y %y4-%m2-%d2T00:00:00 none none XLAIMULTI /dev/null:0.0
+
+#---------------------------
+# Option 2: Yuan processed
+#---------------------------
+# Use file with land type stored as 3rd dimension to speed up file read
+#XLAIMULTI cm2_cm-2 N Y %y4-%m2-%d2T00:00:00 none none XLAIMULTI ./HcoDir/Yuan_XLAI/v2019-03/Condensed_Yuan_proc_MODIS_XLAI.025x025.%y4.nc
+
+###############################################################################
+###
+### HEMCO Base Emissions (Update if HEMCO_Config.rc changes) 
+###
+###############################################################################
+
+#==============================================================================
+# SF6 emissions from EDGAR v4.2
+#==============================================================================
+EDGAR_SF6 1 N Y F%y4-01-01T00:00:00 none none emi_sf6 /dev/null:0.0
+
+#==============================================================================
+# --- EDGAR v4.3 (EDGARv4.3) ---
+# EDGARv4.3 is turned off by default in HEMCO_Config.rc
+#==============================================================================
+EDGAR_CO25d_POW  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_ENG  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_IND  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_TRO  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_TNG  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_RCO  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_PPA  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+#EDGAR_CO25d_AWB kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_SWD  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+EDGAR_CO25d_FFF  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+
+#==============================================================================
+# --- HTAP v2 (HTAP) ---
+# HTAP is off by default in HEMCO_Config.rc
+#==============================================================================
+HTAP_CO25d_IND    kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+HTAP_CO25d_POW    kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+HTAP_CO25d_RES    kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+HTAP_CO25d_TRA    kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+#HTAP_CO25d_AIR1  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+#HTAP_CO25d_AIR2  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+#HTAP_CO25d_AIR3  kg/m2/s N Y F%y4-01-01T00:00:00 none none emi_co  /dev/null:0.0
+
+#==============================================================================
+# --- CEDS (CEDS) ---
+#==============================================================================
+CEDS_CO25d_AGR    kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_agr   /dev/null:0.0
+CEDS_CO25d_ENE    kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_ene   /dev/null:0.0
+CEDS_CO25d_IND    kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_ind   /dev/null:0.0
+CEDS_CO25d_NRTR   kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_nrtr  /dev/null:0.0
+CEDS_CO25d_ROAD   kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_road  /dev/null:0.0
+CEDS_CO25d_RCOR   kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_rcor  /dev/null:0.0
+CEDS_CO25d_RCOC   kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_rcoc  /dev/null:0.0
+CEDS_CO25d_RCOO   kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_rcoo  /dev/null:0.0
+CEDS_CO25d_SLV    kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_slv   /dev/null:0.0
+CEDS_CO25d_WST    kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_wst   /dev/null:0.0
+CEDS_CO25d_SHP    kg/m2/s N Y F%y4-%m2-01T00:00:00 none none CO_shp   /dev/null:0.0
+
+###############################################################################
+###
+### HEMCO Non-Emissions Data (update if HEMCO_Config.rc changes)
+###
+###############################################################################
+
+#==============================================================================
+# --- Time zones (offset to UTC) ---
+#==============================================================================
+TIMEZONES count N V - none none UTC_OFFSET /dev/null:0
+
+###############################################################################
+###
+### HEMCO Scale Factors (update if HEMCO_Config.rc changes)
+###
+###############################################################################
+
+#==============================================================================
+# --- annual scale factors ---
+#==============================================================================
+LIQFUEL_THISYR     1 N Y F%y4-01-01T00:00:00   none none COscalar  /dev/null:0.0
+LIQFUEL_2008_2010  1 N Y F%y4-01-01T00:00:00   none none COscalar  /dev/null:0.0
+
+#==============================================================================
+# --- seasonal scale factors ---
+#==============================================================================
+# --- From EDGAR 4.3.1 ---
+POW 1 Y Y F2010-%m2-01T00:00:00 none none POW /dev/null:0.0
+ENG 1 Y Y F2010-%m2-01T00:00:00 none none ENG /dev/null:0.0
+IND 1 Y Y F2010-%m2-01T00:00:00 none none IND /dev/null:0.0
+TRO 1 Y Y F2010-%m2-01T00:00:00 none none TRO /dev/null:0.0
+TNG 1 Y Y F2010-%m2-01T00:00:00 none none TNG /dev/null:0.0
+RCO 1 Y Y F2010-%m2-01T00:00:00 none none RCO /dev/null:0.0
+PPA 1 Y Y F2010-%m2-01T00:00:00 none none PPA /dev/null:0.0
+AGR 1 Y Y F2010-%m2-01T00:00:00 none none AGR /dev/null:0.0
+AWB 1 Y Y F2010-%m2-01T00:00:00 none none AWB /dev/null:0.0
+SOL 1 Y Y F2010-%m2-01T00:00:00 none none SOL /dev/null:0.0
+SWD 1 Y Y F2010-%m2-01T00:00:00 none none SWD /dev/null:0.0
+FFF 1 Y Y F2010-%m2-01T00:00:00 none none FFF /dev/null:0.0
+
+###############################################################################
+###
+### Masks (update if HEMCO_Config.rc changes)
+###
+###############################################################################
+
+#==============================================================================
+# Country/region masks
+#==============================================================================
+OCEAN_MASK   1 N Y - none none FROCEAN    ./minimal_input_dataset/metfields_center.nc
+
+%%
+
+DerivedExports%%
+# ---------|---------|--------------------------------------------|
+#  Export  | Primary |_________________ Mask _____________________|
+#  Name    |  Name   |    Name    |           Expression          |    
+# ---------|---------|------------|-------------------------------|
+# ---------|---------|------------|-------------------------------|
+%%
