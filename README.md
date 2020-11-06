@@ -16,9 +16,10 @@ $ mpirun -np 6 gchp
 \*_assuming your environment is loaded and `gchp` is in your `$PATH`_
 
 #### Validating
-
 You can validate the run with
 ```shell
 $ ncks --chk_nan OutputDir/GCHP.SpeciesConc.*.nc4
 ```
 
+##### Uses
+This simulation is intended to enable CI  runtime tests. It may also be useful for tutorials since it's standalone, or for troubleshooting GCHP on a new cluster.
